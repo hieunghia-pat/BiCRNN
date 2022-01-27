@@ -48,7 +48,7 @@ def run_epoch(loaders, train, prefix, epoch, fold, model, loss_compute, metric, 
         pbar = tqdm(loader, desc='Epoch {} - {} - Fold {}'.format(epoch+1, prefix, fold_idx+1), unit='it', ncols=0)
         
         for imgs, tokens, token_lens in pbar:
-            batch = Batch(imgs, tokens, token_lens, dataset.vocab.padding_idx, device=device)
+            batch = Batch(imgs, tokens, token_lens, device=device)
 
             fmt = '{:.4f}'.format
             if train:
