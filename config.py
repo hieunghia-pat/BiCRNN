@@ -20,7 +20,7 @@ image_size = (-1, 64)
 ## training configuration
 max_epoch = 500
 learning_rate = 1
-checkpoint_path = "/content/gdrive/MyDrive/TransformerOCR/saved_models"
+checkpoint_path = "/content/gdrive/MyDrive/BiCRNN/saved_models"
 start_from = None
 
 ## model configuration
