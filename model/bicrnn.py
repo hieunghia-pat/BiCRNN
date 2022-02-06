@@ -15,9 +15,9 @@ class BiCRNN(nn.Module):
 
     def get_predictions(self, images):
         encoded_features = self.map2seq(self.encoder(images))
-        ys = self.decoder(encoded_features).argmax(dim=-1)
+        ys = self.decoder(encoded_features).transpose(0, 1) # (bs, w, vocab_size)
 
-        return ys
+        return ys.argmax(dim=-1)
 
     def forward(self, x):
         '''
