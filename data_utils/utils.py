@@ -216,8 +216,8 @@ def collate_fn(samples):
 def preprocess_sentence(sentence, level="character"):
     if level == "character":
         sentence = sentence = re.sub(r"[“”]", "\"", sentence)
-        sentence = list(sentence.strip())
-        tokens = " ".join(sentence.strip().split()) # remove duplicated spaces
+        sentence = " ".join(sentence.strip().split()) # remove duplicated spaces
+        tokens = list(sentence)
     else:
         sentence = re.sub(r"[“”]", "\"", sentence)
         sentence = re.sub(r"!", " ! ", sentence)
