@@ -3,7 +3,6 @@ from torch import nn
 from model.encoder import Encoder
 from model.decoder import Decoder
 from model.decoder import Map2Seq
-import config
 
 class BiCRNN(nn.Module):
     def __init__(self, imgChannels, hidden_dim, vocab_size):
@@ -11,7 +10,7 @@ class BiCRNN(nn.Module):
 
         self.encoder = Encoder(imgChannels)
         self.map2seq = Map2Seq()
-        self.decoder = Decoder(160, hidden_dim, vocab_size)
+        self.decoder = Decoder(800, hidden_dim, vocab_size)
 
     def get_predictions(self, images):
         encoded_features = self.map2seq(self.encoder(images))

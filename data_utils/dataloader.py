@@ -33,7 +33,7 @@ class OCRDataset(Dataset):
         img_path, label = sample["image"], sample["label"]
         img = cv.imread(img_path)
 
-        img = img / 255.
+        img = img / img.max()
 
         # resize the image 
         img_h, img_w, _ = img.shape 
