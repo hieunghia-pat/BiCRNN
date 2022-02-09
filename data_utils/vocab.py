@@ -102,6 +102,9 @@ class Vocab(object):
                 sentence = "".join(sentence)
             else:
                 sentence = " ".join(sentence)
+            # the sentences typically have repeating characters such as "vùnngg bbiểển nưướớc taa" as the result of CTC loss, so we need to truncate these characters
+            sentence = set(list(sentence))
+            sentence = "".join(list(sentence))
             sentences.append(sentence.strip())
 
         return sentences
