@@ -5,13 +5,10 @@ class Metrics(object):
         self.vocab = vocab
 
     def get_error(self, label, true_label, mode):
-        error = 0
         if mode == "character":
-            error += fastwer.score_sent(label,true_label, char_level=True)
+            return fastwer.score_sent(label,true_label, char_level=True)
         else:
-            error += fastwer.score_sent(label, true_label)
-
-        return error
+            return fastwer.score_sent(label, true_label)
 
     def get_scores(self, predicteds, gts):
         cer = 0

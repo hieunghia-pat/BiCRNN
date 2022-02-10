@@ -58,12 +58,12 @@ def run_epoch(loaders, train, prefix, epoch, fold, model, loss_compute, metric, 
                 pbar.set_postfix(loss=fmt(loss.item()))
             else:
                 outs = model.get_predictions(batch.imgs)
-                predicted_text = dataset.vocab.decode_sentence(outs.to("cpu"))[0]
-                gt_text = dataset.vocab.decode_sentence(batch.tokens.to("cpu"))[0]
-                scores = metric.get_scores(predicted_text, gt_text)
+                predicted_texts = dataset.vocab.decode_sentence(outs.to("cpu"))
+                gt_texts = dataset.vocab.decode_sentence(batch.tokens.to("cpu"))
+                scores = metric.get_scores(predicted_texts, gt_texts)
                 wer_tracker.append(scores["wer"])
                 cer_tracker.append(scores["cer"])
-                pbar.set_postfix(cer=fmt(scores["cer"]), wer=fmt(scores["wer"]), predicted=predicted_text, gt = gt_text)
+                pbar.set_postfix(cer=fmt(scores["cer"]), wer=fmt(scores["wer"]))
             
             pbar.update()
 
